@@ -1,0 +1,76 @@
+
+// /* I pledge on my honor that I have not given or received  * any unauthorized assistance on this project. 
+// * Rinat Grinbeg, rinat_9696@walla.com
+
+public class BiggerFounder
+{
+  public static void main (String args[]) 
+  {
+    //this system receives data from the user builds a random arry, and finds the longest series of numbers in ascending order
+   StdOut.print ("Determine the size of the array "); 
+   int num= StdIn.readInt (); 
+   // builds the arry
+   int[] arr1 = new int [num];
+   int[] arr2 = new int [2];
+   StdOut.print ("Set the minimum value to fill the array"); 
+   int min= StdIn.readInt (); 
+   StdOut.print ("Set the maximun value to fill the array"); 
+   int max= StdIn.readInt (); 
+   int jump =0;
+   int maximum=0 ; 
+   int fromPlace=0;
+   arr1 =findBiggestPartEzer(arr1, min, max);
+   findBiggestPart (arr1,arr2,jump, maximum,fromPlace);
+   {
+   
+   for( int i = 0 ; i < arr1.length ;i++)
+   {
+    StdOut.print(arr1[i] + "\t");
+    }
+   StdOut.println();
+   StdOut.println();
+   for( int i = arr2[1] ; i < arr2[0]+ arr2[1] ;i++)
+  {
+    StdOut.print(arr1[i] + "\t");
+  }
+  }
+  }
+  //Construction function to build a random arry.
+    public static int[] findBiggestPartEzer (int arr1[],int min, int max)
+    {
+       for ( int i = 0 ; i < arr1.length ;i++)
+       {
+        arr1 [i] = (int) (Math.random () *(max- min) + min) ; 
+       } 
+       return arr1;
+    }
+    //Construction  auxiliary function testing longest series.
+     public static void findBiggestPart (int [] arr1,int [] arr2,int jump, int maximum, int fromPlace )
+     { 
+       
+       for (int i=0 ; i<arr1.length-2 ;i++) 
+       { 
+          jump = 0; 
+           for (int j=i ; j<=arr1.length-2 ;j++)
+           {
+            if (arr1[j] <arr1[j+1])
+             jump++;
+             else 
+             break; 
+           }
+         if ( jump > maximum)
+          { 
+           maximum =jump; 
+           fromPlace=i;  
+          }
+        
+       } 
+       arr2[0]=maximum+1;
+       arr2[1]=fromPlace;
+     }
+          
+}
+        
+    
+       
+

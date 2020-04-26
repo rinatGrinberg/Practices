@@ -1,0 +1,114 @@
+public class StudentScores 
+{
+  public class StudentNode
+  {
+    int studentId ;
+    int avgScore;
+    int [] studentScore;
+    StudentNode left;
+    StudentNode right;
+    
+    public StudentNode()
+    {
+      this.studentId = 0;
+      this.studentScore = new int[] ;
+      this.avgScore = 0;
+      right = left = null;
+    }
+    public StudentNode(int studentId, int[] studentScore)
+    {
+      this.studentId =  studentId;
+      this.studentScore = studentScore ;
+      right = left = null;
+    }
+  }
+  
+  StudentNode root;
+  public StudentScores()
+  {
+    StudentNode root = null;
+  }
+
+
+ public StudentScores(StudentNode root)
+ {
+  this.root = new StudentNode(root.studentId , root.studentScore , root.score);
+ }
+
+  public StudentNode insert( int studentId , int score)
+  { 
+    if (root == null )
+    { this.root = new StudentNode( studentId , score);
+
+     root.studentScore[root.k] = score;
+     root.k++;
+   
+    }
+    
+    if ( studentId < root.studentId) {root.left = insert(studentId,score); }
+    
+    if ( studentId > root.studentId){root.right = insert(studentId,score); }
+ 
+    if (studentId == root.studentId) {root.studentScore[root.k+1] =score;}
+    return root;
+
+}
+ /* public int getMinScore (studentId)
+  {
+    
+  StudentNode run =  insert( studentId,0);
+  for(int i=0;i<=k+1 ;i++) 
+  {
+    
+    run.studentScore[i] < run.studentScore[i+1]
+  
+ if ( run == null) 
+   return -1; 
+}*/
+
+  public double getMaxAverage()
+  {  double winner = 0;
+     double sum = 0;
+     double sum1 = 0;
+    while (( root.left != null ) && (root.right !=null))
+      sum =0;
+      sum1 =0;
+    {  
+      for ( int i =0; i<root.left.k;i++)
+      { 
+        sum+= root.left.studentScore[root.right.k];
+      }
+    sum = sum /root.right.k;
+    
+     for ( int i =0; i<root.right.k;i++)
+      {
+       sum+= root.right.studentScore[root.right.k];
+      }
+    sum1 = sum1 /root.left.k;
+    if ( sum1 >sum){ 
+    if ( sum1 > winner ){sum1 = winner;}
+    }
+    if( sum1 <sum){
+    if ( sum < winner ){sum = winner;}
+   }
+  }
+      return winner;
+    
+  }
+  public void toString (StudentNode student)
+  { 
+   StdOut.println(student.studentId);
+   StdOut.println("the scors of  this student :");
+  for ( int i = 0 ; i < student.studentScore.length ; i++ ) 
+  {
+   StdOut.print(student.studentScore[i]);
+  }                                  
+      
+   
+     
+}
+}
+
+
+
+
